@@ -1,0 +1,7 @@
+add validation phone number:
+1: 10 digits
+2: can use "()-" but have to 10 digits
+3: change storing format to BD as (012)345-6789
+
+limitation for value in testDB.sql
+Returns the current date as a value in 'YYYY-MM-DD' or YYYYMMDD format

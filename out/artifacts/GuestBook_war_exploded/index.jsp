@@ -68,19 +68,19 @@
 
   <form action="process.jsp" method="post">
       First Name:<br>
-      <input type="text" name="firstName"  onclick="this.value=''"/><br/>
+      <input type="text" name="firstName" /><br/>
       Last Name:<br>
-      <input type="text" name="lastName"  onclick="this.value=''"/><br/>
+      <input type="text" name="lastName" /><br/>
       Birthday:<br>
-      <input type="date" name="birthday"  onclick="this.value=''"/><br/>
+      <input type="date" name="birthday"  /><br/>
       Phone number:<br>
-      <input type="text" name="phoneNumber" onclick="this.value=''"/><br/>
+      <input type="text" name="phoneNumber" /><br/>
       Email:<br>
-      <input type="text" name="email" onclick="this.value=''"/><br/>
+      <input type="text" name="email" /><br/>
       Country:<br>
-      <input type="text" name="country" onclick="this.value=''"/><br/>
+      <input type="text" name="country" /><br/>
       Region:<br>
-      <input type="text" name="region" onclick="this.value=''"/><br/>
+      <input type="text" name="region" /><br/>
       <input type="submit" value="register"/>
   </form>
 

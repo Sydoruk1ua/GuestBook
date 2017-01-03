@@ -10,5 +10,7 @@ Returns the current date as a value in 'YYYY-MM-DD' or YYYYMMDD format
 add "create and fill DB" to first page
 
 verify email have to "@"
-
+// todo add properties file, and do it all through properties
+add css file
+character set for cyrillic does'nt work
 verify name can't contain digits

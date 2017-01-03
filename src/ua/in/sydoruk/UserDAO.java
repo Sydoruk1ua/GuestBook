@@ -5,21 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-       // System.out.println(getAllUsers());
-        User user = new User();
-        user.setFirstName("Oleksandr3");
-        user.setLastName("Sydoruk");
-        user.setBirthday(Date.valueOf("1992-1-10"));
-        user.setPhoneNumber("(097)315-3602");
-        user.setEmail("sydoruk1ua@gmail.com");
-        user.setCountry("Ukraine");
-        user.setRegion("Vinnytsia");
-        addUser(user);
-    }
-
-    public static Connection getConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver"); // todo add properties file, and do it all through properties
+    private static Connection getConnection() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "root");
         return connection;
     }
@@ -46,7 +33,7 @@ public class UserDAO {
     public static void addUser (User user) throws SQLException, ClassNotFoundException {
         try (Connection c = getConnection();
              PreparedStatement ps = c.prepareStatement("INSERT INTO users(firstName, lastName, birthday, phoneNumber," +
-                     " email, country, region ) VALUES (?, ?, ?, ?, ?, ?, ?)");){
+                     " email, country, region ) VALUES (?, ?, ?, ?, ?, ?, ?)")){
             ps.setString(1, user.getFirstName());
             ps.setString(2, user.getLastName());
             ps.setDate(3, new Date(user.getBirthday().getTime()));
@@ -56,8 +43,6 @@ public class UserDAO {
             ps.setString(7, user.getRegion());
 
             ps.executeUpdate();
-
         }
-
     }
 }

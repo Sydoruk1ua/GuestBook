@@ -11,7 +11,6 @@
         div {
             border: 2px;
         }
-
         .left {
             position: absolute;
             float: left;
@@ -19,48 +18,10 @@
             left: 50px;
         }
 
-        .right {
-            float: right;
-            width: 250px;
-        }
-
-        .buttonForAdd {
-            padding: 12px 23px;
-            border-radius: 3px;
-            border: 2px solid #dcddde;
-            border-bottom-color: #c9cacb;
-            background: #f5f6f7;
-            background: -moz-linear-gradient(top, #fcfdfe 0%, #f5f6f7 100%);
-            background: -webkit-linear-gradient(top, #fcfdfe 0%, #f5f6f7 100%);
-            background: -o-linear-gradient(top, #fcfdfe 0%, #f5f6f7 100%);
-            box-shadow: inset 0 0 0 1px #fff;
-            text-shadow: 0 1px 0 #fff;
-            border-color: #68a8f7;
-
-        }
-
         .bottom {
             position: fixed;
             bottom: 0;
         }
-        .button {
-            padding: 4px 23px;
-            border-radius: 3px;
-            border: 1px solid #dcddde;
-            border-bottom-color: #c9cacb;
-            background: #f5f6f7;
-            background: -moz-linear-gradient(top, #fcfdfe 0%, #f5f6f7 100%);
-            background: -webkit-linear-gradient(top, #fcfdfe 0%, #f5f6f7 100%);
-            background: -o-linear-gradient(top, #fcfdfe 0%, #f5f6f7 100%);
-            box-shadow: inset 0 0 0 1px #fff;
-            text-shadow: 0 1px 0 #fff;
-        }
-
-        .sizePage {
-            font-size: 19pt;
-        }
-
-
     </style>
 </head>
 <body>
@@ -83,7 +44,7 @@
             <th width="180px">Phone number</th>
             <th width="300px">Email</th>
             <th width="200px">Country</th>
-            <th width="200px">Region</th>
+            <th width="200px">City (region)</th>
         </tr>
         </thead>
         <tbody>

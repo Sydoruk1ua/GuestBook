@@ -1,0 +1,9 @@
+
+.gitignore
+.idea/dataSources/4d2f0182-350a-4302-9882-479bdae5b5f2/_src_/
+.idea/dataSources/4d2f0182-350a-4302-9882-479bdae5b5f2/_staging_/
+out/artifacts/GuestBook_war_exploded
+out/production
+READMEforMe.md
+todo.txt
+out/

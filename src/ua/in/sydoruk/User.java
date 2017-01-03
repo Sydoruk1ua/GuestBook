@@ -11,19 +11,6 @@ public class User {
     private String country;
     private String region;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthday=" + birthday +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", country='" + country + '\'' +
-                ", region='" + region + '\'' +
-                '}';
-    }
-
     public String getEmail() {
         return email;
     }

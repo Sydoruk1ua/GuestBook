@@ -1,133 +1,93 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Oleksandr
-  Date: 31.12.2016
-  Time: 12:33
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="ua.in.sydoruk.UserDAO" %>
+<%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page isELIgnored="false" %>
+
+
 <html>
   <head>
-    <title>$Title$</title>
+    <title>Guest Book</title>
+      <style type="text/css">
+          div {
+              border: 2px;
+          }
+
+          .left {
+              position: absolute;
+              float: left;
+              width: 1000px;
+              left: 50px;
+          }
+
+          .right {
+              float: right;
+              width: 250px;
+          }
+
+          .buttonForAdd {
+              padding: 12px 23px;
+              border-radius: 3px;
+              border: 2px solid #dcddde;
+              border-bottom-color: #c9cacb;
+              background: #f5f6f7;
+              background: -moz-linear-gradient(top, #fcfdfe 0%, #f5f6f7 100%);
+              background: -webkit-linear-gradient(top, #fcfdfe 0%, #f5f6f7 100%);
+              background: -o-linear-gradient(top, #fcfdfe 0%, #f5f6f7 100%);
+              box-shadow: inset 0 0 0 1px #fff;
+              text-shadow: 0 1px 0 #fff;
+              border-color: #68a8f7;
+
+          }
+
+          .bottom {
+              position: fixed;
+              bottom: 0;
+          }
+          .button {
+              padding: 4px 23px;
+              border-radius: 3px;
+              border: 1px solid #dcddde;
+              border-bottom-color: #c9cacb;
+              background: #f5f6f7;
+              background: -moz-linear-gradient(top, #fcfdfe 0%, #f5f6f7 100%);
+              background: -webkit-linear-gradient(top, #fcfdfe 0%, #f5f6f7 100%);
+              background: -o-linear-gradient(top, #fcfdfe 0%, #f5f6f7 100%);
+              box-shadow: inset 0 0 0 1px #fff;
+              text-shadow: 0 1px 0 #fff;
+          }
+
+          .sizePage {
+              font-size: 19pt;
+          }
+
+
+      </style>
   </head>
   <body>
-  $END$
-  <form id="frm">
-    <table>
-      <tr>
-        <td>
-          <table width="100%" cellpadding="0" cellspacing="0" border="0">
-            <tr style="text-align: center;">
-              <td>방명록 작성</td>
-          </table>
-          <table>
-            <tr height="1" bgcolor="#dddddd">
-              <td colspan="4"></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td align="center"><b>이메일</b></td>
-              <td><input type="text" name="EMAIL" id="EMAIL" size="50"
-                         maxlength="50"></td>
-              <td>&nbsp;</td>
-            </tr>
-            <tr height="1" bgcolor="#dddddd">
-              <td colspan="4"></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td align="center"><b>비밀번호</b></td>
-              <td><input type="password" name="PWD" id="PWD" size="50"
-                         maxlength="50"></td>
-              <td>&nbsp;</td>
-            </tr>
-            <tr height="1" bgcolor="#dddddd">
-              <td colspan="4"></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td align="center"><b>내용</b></td>
-              <td><textarea name="CONTENTS" id="CONTENTS" cols="50"
-                            rows="13"></textarea></td>
-              <td>&nbsp;</td>
-            </tr>
-            <tr height="1" bgcolor="#dddddd">
-              <td colspan="4"></td>
-            </tr>
-            <tr height="1" bgcolor="#82B5DF">
-              <td colspan="4"></td>
-            </tr>
-            <tr align="center">
-              <td>&nbsp;</td>
-              <td colspan="2"><input type="button" value="등록" id="write">
-                <input type="button" value="취소" id="cancel"></td>
-              <td>&nbsp;</td>
-            </tr>
-          </table>
 
-        </td>
-      </tr>
-    </table>
+  <form action="process.jsp" method="post">
+      First Name:<br>
+      <input type="text" name="firstName"  onclick="this.value=''"/><br/>
+      Last Name:<br>
+      <input type="text" name="lastName"  onclick="this.value=''"/><br/>
+      Birthday:<br>
+      <input type="date" name="birthday"  onclick="this.value=''"/><br/>
+      Phone number:<br>
+      <input type="text" name="phoneNumber" onclick="this.value=''"/><br/>
+      Email:<br>
+      <input type="text" name="email" onclick="this.value=''"/><br/>
+      Country:<br>
+      <input type="text" name="country" onclick="this.value=''"/><br/>
+      Region:<br>
+      <input type="text" name="region" onclick="this.value=''"/><br/>
+      <input type="submit" value="register"/>
   </form>
 
-  <form id="commonForm" name="commonForm"></form>
-
-  <script type="text/javascript">
-      $(document).ready(function() {
-          $("#cancel").click(function() {
-              bn_cancelRegister();
-          });
-          $("#write").on("click", function() {
-              bn_registerGuestbook();
-          });
-      });
-      function bn_cancelRegister() {
-          var comSubmit = new ComSubmit();
-          comSubmit.setUrl("/guestbook/guestbookList");
-          comSubmit.submit();
-      }
-      function bn_registerGuestbook() {
-          var comSubmit = new ComSubmit("frm");
-          comSubmit.setUrl("/guestbook/guestbookAdd");
-          comSubmit.submit();
-      }
-      function gfn_isNull(str) {
-          if (str == null)
-              return true;
-          if (str == "Nan")
-              return true;
-          var chkStr = new String(str);
-          if (chkStr.valueOf() == "undefined")
-              return true;
-          if (chkStr == null)
-              return true;
-          if (chkStr.toString.length() == 0)
-              return true;
-          return false;
-      }
-      function ComSubmit(opt_formId) {
-          this.formId = gfn_isNull(opt_formId) == true ? "commonForm"
-              : opt_formId;
-          this.url = "";
-          if (this.formId == "commonForm") {
-              $("#commonForm")[0].reset();
-          }
-          this.setUrl = function setUrl(url) {
-              this.url = url;
-          }
-          this.addParam = function addParam(key, value) {
-              $("#" + this.formId)
-                  .append(
-                      $("<input type='hidden' name='"+key+"'id='"+key+"' value='"+value+"' >"));
-          }
-          this.submit = function submit() {
-              var frm = $("#" + this.formId)[0];
-              frm.action = this.url;
-              frm.method = "post";
-              frm.submit();
-          }
-      }
-  </script>
+  <div class="bottom" align="center">
+      <a href="index.jsp">1</a>
+      <a href="viewAllUsers.jsp">2</a>
+  </div>
 
   </body>
 </html>

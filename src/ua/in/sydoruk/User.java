@@ -1,14 +1,36 @@
 package ua.in.sydoruk;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class User {
     private String firstName;
     private String lastName;
     private Date birthday;
     private String phoneNumber;
+    private String email;
     private String country;
     private String region;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthday=" + birthday +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", country='" + country + '\'' +
+                ", region='" + region + '\'' +
+                '}';
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getFirstName() {
         return firstName;

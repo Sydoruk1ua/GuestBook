@@ -2,7 +2,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
 
-
 <html>
 <head>
     <title>Guest Book</title>
@@ -20,7 +19,7 @@
 </head>
 <body>
 
-<form action="process.jsp" method="post">
+<form action="process.jsp" method="post" >
     First Name:<br>
     <input type="text" name="firstName" required/><br/>
     Last Name:<br>

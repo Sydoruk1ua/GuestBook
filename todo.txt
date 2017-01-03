@@ -1,16 +1,18 @@
-add validation phone number:
+1)add validation phone number: check in internet how to
 1: 10 digits
 2: can use "()-" but have to 10 digits
 3: change storing format to BD as (012)345-6789
 
-limitation for value in testDB.sql
+2)limitation for value in testDB.sql
 
-Returns the current date as a value in 'YYYY-MM-DD' or YYYYMMDD format
+3)add "create and fill DB" to first page
 
-add "create and fill DB" to first page
 
-verify email have to "@"
 // todo add properties file, and do it all through properties
-add css file
-character set for cyrillic does'nt work
-verify name can't contain digits
+4)add css file
+
+5)verify name can't contain digits
+
+
+Tests:
+1) cyrillic encoding save to DB

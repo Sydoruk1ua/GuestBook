@@ -1,21 +1,45 @@
 package ua.in.sydoruk;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class UserDAO {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        // System.out.println(getAllUsers());
+        User user = new User();
+        user.setFirstName("TestConnection");
+        user.setLastName("Sydoruk");
+        user.setBirthday(Date.valueOf("1992-1-10"));
+        user.setPhoneNumber("(097)315-3602");
+        user.setEmail("sydoruk1ua@gmail.com");
+        user.setCountry("Ukraine");
+        user.setRegion("Vinnytsia");
+        addUser(user);
+    }
+
     private static Connection getConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "root");
+        Properties p = new Properties();
+        Connection connection = null;
+        try (InputStream in = UserDAO.class.getClassLoader().getResourceAsStream("config.properties")) {
+            p.load(in);
+            Class.forName(p.getProperty("db.driver"));
+            connection = DriverManager.getConnection((p.getProperty("db.url") + p.getProperty("db.name")),
+                    p.getProperty("db.username"), p.getProperty("db.password"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return connection;
     }
 
     public static List<User> getAllUsers() throws SQLException, ClassNotFoundException {
         List<User> users = new ArrayList<>();
-        try(Connection c = getConnection();
-            ResultSet resultSet = c.createStatement().executeQuery("SELECT * FROM users");){
-            while (resultSet.next()){
+        try (Connection c = getConnection();
+             ResultSet resultSet = c.createStatement().executeQuery("SELECT * FROM users");) {
+            while (resultSet.next()) {
                 User user = new User();
                 user.setFirstName(resultSet.getString("firstName"));
                 user.setLastName(resultSet.getString("lastName"));
@@ -30,10 +54,10 @@ public class UserDAO {
         return users;
     }
 
-    public static void addUser (User user) throws SQLException, ClassNotFoundException {
+    public static void addUser(User user) throws SQLException, ClassNotFoundException {
         try (Connection c = getConnection();
              PreparedStatement ps = c.prepareStatement("INSERT INTO users(firstName, lastName, birthday, phoneNumber," +
-                     " email, country, region ) VALUES (?, ?, ?, ?, ?, ?, ?)")){
+                     " email, country, region ) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
             ps.setString(1, user.getFirstName());
             ps.setString(2, user.getLastName());
             ps.setDate(3, new Date(user.getBirthday().getTime()));

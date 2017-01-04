@@ -1,4 +1,4 @@
-package ua.in.sydoruk;
+package ua.in.sydoruk.model;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +11,7 @@ public class UserDAO {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         // System.out.println(getAllUsers());
         User user = new User();
-        user.setFirstName("TestConnection");
+        user.setFirstName("TestConnection1");
         user.setLastName("Sydoruk");
         user.setBirthday(Date.valueOf("1992-1-10"));
         user.setPhoneNumber("(097)315-3602");

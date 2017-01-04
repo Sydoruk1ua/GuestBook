@@ -27,7 +27,7 @@
     Birthday:<br>
     <input type="date" name="birthday" required/><br/>
     Phone number:<br>
-    <input type="text" name="phoneNumber" required/><br/>
+    <input type="tel" pattern='[\(]\d{3}[\)]\d{3}[\-]\d{4}' value="(***)***-****" name="phoneNumber" required/><br/>
     Email:<br>
     <input type="email" name="email" required/><br/>
     Country:<br>

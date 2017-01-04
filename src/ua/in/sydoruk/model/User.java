@@ -1,4 +1,4 @@
-package ua.in.sydoruk;
+package ua.in.sydoruk.model;
 
 import java.util.Date;
 

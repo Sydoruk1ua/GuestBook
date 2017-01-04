@@ -1,6 +1,6 @@
-<%@ page import="ua.in.sydoruk.User" %>
+<%@ page import="ua.in.sydoruk.model.User" %>
 <%@ page import="java.sql.Date" %>
-<%@ page import="ua.in.sydoruk.UserDAO" %>
+<%@ page import="ua.in.sydoruk.model.UserDAO" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% request.setCharacterEncoding("UTF-8"); %>

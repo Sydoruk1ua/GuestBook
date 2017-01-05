@@ -1,9 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page isELIgnored="false" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Guest Book</title>
     <style type="text/css">
         div {
@@ -19,7 +17,7 @@
 </head>
 <body>
 
-<form action="process.jsp" method="post" >
+<form action="" method="post" accept-charset="UTF-8">
     First Name:<br>
     <input type="text" name="firstName" required/><br/>
     Last Name:<br>
@@ -39,8 +37,8 @@
 </form>
 
 <div class="bottom" align="center">
-    <a href="index.jsp">1</a>
-    <a href="viewAllUsers.jsp">2</a>
+    <a href="/" >1</a>
+    <a href="view">2</a>
 </div>
 
 </body>

@@ -11,8 +11,8 @@ public class UserDAO {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         // System.out.println(getAllUsers());
         User user = new User();
-        user.setFirstName("TestConnection1");
-        user.setLastName("Sydoruk");
+        user.setFirstName("Олександр");
+        user.setLastName("Судорук");
         user.setBirthday(Date.valueOf("1992-1-10"));
         user.setPhoneNumber("(097)315-3602");
         user.setEmail("sydoruk1ua@gmail.com");
@@ -54,7 +54,9 @@ public class UserDAO {
         return users;
     }
 
-    public static void addUser(User user) throws SQLException, ClassNotFoundException {
+    public static int addUser(User user) {
+        int status = 0;
+
         try (Connection c = getConnection();
              PreparedStatement ps = c.prepareStatement("INSERT INTO users(firstName, lastName, birthday, phoneNumber," +
                      " email, country, region ) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
@@ -66,7 +68,12 @@ public class UserDAO {
             ps.setString(6, user.getCountry());
             ps.setString(7, user.getRegion());
 
-            ps.executeUpdate();
+            status = ps.executeUpdate();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
+
+        return status;
     }
+
 }

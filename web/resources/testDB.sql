@@ -1,13 +1,13 @@
 #Script to create the database
 CREATE TABLE users (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `firstName` VARCHAR(25) NOT NULL,
-  `lastName` VARCHAR(45) NOT NULL,
+  `firstName` VARCHAR(100) NOT NULL,
+  `lastName` VARCHAR(100) NOT NULL,
   `birthday` DATE NOT NULL,
   `phoneNumber` VARCHAR(15) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `country` VARCHAR(45) NOT NULL,
-  `region` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `country` VARCHAR(100) NOT NULL,
+  `region` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
   ENGINE = InnoDB
   DEFAULT CHARACTER SET = utf8

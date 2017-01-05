@@ -125,12 +125,12 @@
     </column>
     <column id="41" parent="19" name="firstName">
       <Position>2</Position>
-      <DataType>varchar(25)|0</DataType>
+      <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="42" parent="19" name="lastName">
       <Position>3</Position>
-      <DataType>varchar(45)|0</DataType>
+      <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="43" parent="19" name="birthday">
@@ -145,17 +145,17 @@
     </column>
     <column id="45" parent="19" name="email">
       <Position>6</Position>
-      <DataType>varchar(45)|0</DataType>
+      <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="46" parent="19" name="country">
       <Position>7</Position>
-      <DataType>varchar(45)|0</DataType>
+      <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="47" parent="19" name="region">
       <Position>8</Position>
-      <DataType>varchar(45)|0</DataType>
+      <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <key id="48" parent="19" name="PRIMARY">

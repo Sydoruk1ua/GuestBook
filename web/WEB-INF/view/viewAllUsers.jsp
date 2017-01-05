@@ -1,8 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="ua.in.sydoruk.model.User" %>
-<%@ page import="ua.in.sydoruk.model.UserDAO" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -27,15 +23,6 @@
 <body>
 <div class="left" align="center">
     <table border="1px" cellpadding="0" cellspacing="0">
-        <%
-            List<User> users = null;
-            try {
-                users = UserDAO.getAllUsers();
-            } catch (SQLException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            pageContext.setAttribute("users", users);
-        %>
         <thead>
         <tr>
             <th width="100px">Firs Name</th>
@@ -48,7 +35,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="user" items="${pageScope.users}">
+        <c:forEach var="user" items="${requestScope.view}">
             <tr>
                 <td align="center"><c:out value="${user.firstName}"></c:out></td>
                 <td align="center"><c:out value="${user.lastName}"></c:out></td>
@@ -63,8 +50,8 @@
     </table>
 </div>
 <div class="bottom" align="center">
-<a href="index.jsp">1</a>
-<a href="viewAllUsers.jsp">2</a>
+<a href="/">1</a>
+<a href="view">2</a>
 </div>
 
 </body>

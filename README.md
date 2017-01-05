@@ -13,3 +13,4 @@ Adding pagination. Fix cyrillic encoding. Add more validation.
 V1. Working version. Using technologies: JDBC, MySQL, JSP, HTML5 for validation.
 
 
+

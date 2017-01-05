@@ -8,9 +8,12 @@ import java.util.List;
 import java.util.Properties;
 
 public class UserDAO {
+    private int noOfRecords;
+
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        // System.out.println(getAllUsers());
-        User user = new User();
+
+         new UserDAO().viewAllUsers(0, 10).stream().forEachOrdered(System.out::println);
+      /*  User user = new User();
         user.setFirstName("Олександр");
         user.setLastName("Судорук");
         user.setBirthday(Date.valueOf("1992-1-10"));
@@ -18,7 +21,7 @@ public class UserDAO {
         user.setEmail("sydoruk1ua@gmail.com");
         user.setCountry("Ukraine");
         user.setRegion("Vinnytsia");
-        addUser(user);
+        addUser(user);*/
     }
 
     private static Connection getConnection() throws ClassNotFoundException, SQLException {
@@ -33,25 +36,6 @@ public class UserDAO {
             e.printStackTrace();
         }
         return connection;
-    }
-
-    public static List<User> getAllUsers() throws SQLException, ClassNotFoundException {
-        List<User> users = new ArrayList<>();
-        try (Connection c = getConnection();
-             ResultSet resultSet = c.createStatement().executeQuery("SELECT * FROM users");) {
-            while (resultSet.next()) {
-                User user = new User();
-                user.setFirstName(resultSet.getString("firstName"));
-                user.setLastName(resultSet.getString("lastName"));
-                user.setBirthday(resultSet.getDate("birthday"));
-                user.setPhoneNumber(resultSet.getString("phoneNumber"));
-                user.setEmail(resultSet.getString("email"));
-                user.setCountry(resultSet.getString("country"));
-                user.setRegion(resultSet.getString("region"));
-                users.add(user);
-            }
-        }
-        return users;
     }
 
     public static int addUser(User user) {
@@ -74,6 +58,40 @@ public class UserDAO {
         }
 
         return status;
+    }
+
+    public List<User> viewAllUsers(int offset, int noOfRecords) {
+        String query = "select SQL_CALC_FOUND_ROWS * from users limit " + offset + ", " + noOfRecords;
+        List<User> users = new ArrayList<>();
+        User user = null;
+        Statement stmt;
+        try (Connection c = getConnection()) {
+            stmt = c.createStatement();
+            ResultSet resultSet = stmt.executeQuery(query);
+            while (resultSet.next()) {
+                user = new User();
+                user.setFirstName(resultSet.getString("firstName"));
+                user.setLastName(resultSet.getString("lastName"));
+                user.setBirthday(resultSet.getDate("birthday"));
+                user.setPhoneNumber(resultSet.getString("phoneNumber"));
+                user.setEmail(resultSet.getString("email"));
+                user.setCountry(resultSet.getString("country"));
+                user.setRegion(resultSet.getString("region"));
+                users.add(user);
+            }
+            resultSet.close();
+            resultSet = stmt.executeQuery("SELECT FOUND_ROWS()");
+            if(resultSet.next())
+                this.noOfRecords = resultSet.getInt(1);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+
+    public int getNoOfRecords() {
+        return noOfRecords;
     }
 
 }

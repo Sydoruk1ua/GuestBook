@@ -3,17 +3,6 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Guest Book</title>
-    <style type="text/css">
-        div {
-            border: 2px;
-        }
-
-        .bottom {
-            position: fixed;
-            bottom: 0;
-        }
-
-    </style>
 </head>
 <body>
 
@@ -35,11 +24,10 @@
     <input type="submit"/>
     <input type="reset">
 </form>
-
-<div class="bottom" align="center">
+<p align="center">
     <a href="/" >1</a>
     <a href="view">2</a>
-</div>
+</p>
 
 </body>
 </html>

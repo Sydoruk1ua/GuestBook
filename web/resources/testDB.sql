@@ -10,8 +10,7 @@ CREATE TABLE users (
   `region` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
   ENGINE = InnoDB
-  DEFAULT CHARACTER SET = utf8
-  COLLATE = utf8_general_ci;
+  DEFAULT CHARACTER SET = utf8;
 
 #Requests to fill the database with test data
 INSERT INTO users (firstName, lastName, birthday, phoneNumber, email, country, region) VALUES ('Nataliya', 'Trach', '1969-10-23', '(012)345-6789', 'nataliya.trach@gmail.com', 'Ukraine', 'Kiev');

@@ -19,7 +19,7 @@ public class ViewServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int currentPage = 1;
-        int recordsPerPage = 1;
+        int recordsPerPage = 10;
         if (request.getParameter("page") != null)
             currentPage = Integer.parseInt(request.getParameter("page"));
         UserDAO dao = new UserDAO();
@@ -39,7 +39,7 @@ public class ViewServlet extends HttpServlet {
         request.setAttribute("endPage", endPage);
         request.setAttribute("noOfPages", noOfPages);
         request.setAttribute("prev", currentPage > 1 ? "Previous" : "");
-        request.setAttribute("next", currentPage < noOfPages - 1 ? "Next" : "");
+        request.setAttribute("next", currentPage < noOfPages ? "Next" : "");
         request.setAttribute("currentPage", currentPage);
         request.getRequestDispatcher("WEB-INF/view/viewAllUsers.jsp").forward(request, response);
 

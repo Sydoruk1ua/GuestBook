@@ -10,20 +10,6 @@ import java.util.Properties;
 public class UserDAO {
     private int noOfRecords;
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-
-         new UserDAO().viewAllUsers(0, 10).stream().forEachOrdered(System.out::println);
-      /*  User user = new User();
-        user.setFirstName("Олександр");
-        user.setLastName("Судорук");
-        user.setBirthday(Date.valueOf("1992-1-10"));
-        user.setPhoneNumber("(097)315-3602");
-        user.setEmail("sydoruk1ua@gmail.com");
-        user.setCountry("Ukraine");
-        user.setRegion("Vinnytsia");
-        addUser(user);*/
-    }
-
     private static Connection getConnection() throws ClassNotFoundException, SQLException {
         Properties p = new Properties();
         Connection connection = null;
@@ -64,9 +50,9 @@ public class UserDAO {
         String query = "select SQL_CALC_FOUND_ROWS * from users limit " + offset + ", " + noOfRecords;
         List<User> users = new ArrayList<>();
         User user = null;
-        Statement stmt;
-        try (Connection c = getConnection()) {
-            stmt = c.createStatement();
+
+        try (Connection c = getConnection();
+             Statement stmt = c.createStatement()) {
             ResultSet resultSet = stmt.executeQuery(query);
             while (resultSet.next()) {
                 user = new User();
@@ -86,7 +72,6 @@ public class UserDAO {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
         return users;
     }
 

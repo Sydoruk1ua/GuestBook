@@ -13,6 +13,7 @@
 
 5)verify name can't contain digits
 
+6)fix 1 2 in webapps tomcat
 
 Tests:
 1) cyrillic encoding save to DB

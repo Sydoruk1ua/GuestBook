@@ -7,21 +7,24 @@
         div {
             border: 2px;
         }
-        .left {
-            position: absolute;
-            float: left;
-            width: 1000px;
-            left: 50px;
+
+        th, td {
+            padding: 5px;
         }
 
-        .bottom {
-            position: fixed;
-            bottom: 0;
+        th {
+            text-align: left;
         }
+
+        .sizePage {
+            font-size: 14pt;
+        }
+
     </style>
 </head>
 <body>
-<div class="left" align="center">
+<div align="center">
+    <h1 style="color: green">Guest Book</h1>
     <table border="1px" cellpadding="0" cellspacing="0">
         <thead>
         <tr>
@@ -37,75 +40,48 @@
         <tbody>
         <c:forEach var="user" items="${userList}">
             <tr>
-                <td align="center"><c:out value="${user.firstName}"></c:out></td>
-                <td align="center"><c:out value="${user.lastName}"></c:out></td>
-                <td align="center"><c:out value="${user.birthday}"></c:out></td>
-                <td align="center"><c:out value="${user.phoneNumber}"></c:out></td>
-                <td align="center"><c:out value="${user.email}"></c:out></td>
-                <td align="center"><c:out value="${user.country}"></c:out></td>
-                <td align="center"><c:out value="${user.region}"></c:out></td>
+                <td><c:out value="${user.firstName}"></c:out></td>
+                <td><c:out value="${user.lastName}"></c:out></td>
+                <td><c:out value="${user.birthday}"></c:out></td>
+                <td><c:out value="${user.phoneNumber}"></c:out></td>
+                <td><c:out value="${user.email}"></c:out></td>
+                <td><c:out value="${user.country}"></c:out></td>
+                <td><c:out value="${user.region}"></c:out></td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<c:if test="${noOfPages > 1}">
-    <div>
+
+    <c:if test="${noOfPages > 1}">
+
         <table>
-            <tr >
+            <tr class="sizePage">
 
                 <td><a href="view?page=${1}">First</a></td>
                 <td><a href="view?page=${currentPage - 1}">${prev}</a></td>
-                <c:forEach var="i" begin="${startPage}" end="${endPage}">
+                <c:forEach var="i" begin="${startPage}" end="${currentPage - 1}">
                     <td><a href="view?page=${i}">${i}</a></td>
                 </c:forEach>
-             <%--   <c:forEach var="i" begin="${startPage}" end="${currentPage}">
+                <td>${currentPage}</td>
+                <c:forEach var="i" begin="${currentPage + 1}" end="${endPage}">
                     <td><a href="view?page=${i}">${i}</a></td>
                 </c:forEach>
 
-              &lt;%&ndash;  <td>${currentPage+1}</td>&ndash;%&gt;
-
-                <c:forEach var="i" begin="${currentPage+2}" end="${endPage}">
-                    <td><a href="view?page=${i}">${i}</a></td>
-                </c:forEach>--%>
                 <td><a href="view?page=${currentPage + 1}">${next}</a></td>
                 <td><a href="view?page=${noOfPages}">Last</a></td>
 
             </tr>
 
         </table>
-    </div>
-</c:if>
-<br>
-<p>
-<a href="/">1</a>
-<a href="view">2</a>
-</p>
+
+    </c:if>
+    <br>
+    <p>
+        <a href="add">1</a>
+        <a href="view">2</a>
+    </p>
+</div>
 
 </body>
 

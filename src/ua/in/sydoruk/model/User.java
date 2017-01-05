@@ -66,24 +66,4 @@ public class User {
     public void setRegion(String region) {
         this.region = region;
     }
-
-    List<User> users = userService.getUsers(currentPage, nameForSearch);
-    lastPage = userService.getThePageNumber(nameForSearch);
-        modelAndView.addObject("users", users);
-        modelAndView.addObject("first", "Перша");
-        modelAndView.addObject("last", "Остання");
-        modelAndView.addObject("prev", currentPage != 0 ? "Попередня" : "");
-        modelAndView.addObject("current", currentPage);
-    int startPage = currentPage - 5 > 0 ? currentPage - 5 : 1;
-
-    int endPage = startPage + 9;
-        if (endPage > lastPage) {
-        endPage = lastPage;
-    }
-        modelAndView.addObject("startPage", startPage);
-        modelAndView.addObject("endPage", endPage);
-        modelAndView.addObject("number", lastPage);
-        modelAndView.addObject("next", currentPage < lastPage - 1 ? "Наступна" : "");
-        modelAndView.addObject("nameReturn", nameForSearch);
-        modelAndView.addObject("reset", (nameForSearch.length() != 0) ? " " : "");
 }

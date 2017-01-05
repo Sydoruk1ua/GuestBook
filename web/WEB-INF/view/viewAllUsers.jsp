@@ -48,33 +48,59 @@
         </c:forEach>
         </tbody>
     </table>
-    <%--For displaying Previous link except for the 1st page --%>
-    <c:if test="${requestScope.currentPage != 1}">
-        <td><a href="view?page=${requestScope.currentPage - 1}">Previous</a></td>
-    </c:if>
 
-    <%--For displaying Page numbers.
-    The when condition does not display a link for the current page--%>
-    <table border="1" cellpadding="5" cellspacing="5">
-        <tr>
-            <c:forEach begin="1" end="${requestScope.noOfPages}" var="i">
-                <c:choose>
-                    <c:when test="${requestScope.currentPage eq i}">
-                        <td>${i}</td>
-                    </c:when>
-                    <c:otherwise>
-                        <td><a href="view?page=${i}">${i}</a></td>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-        </tr>
-    </table>
-
-    <%--For displaying Next link --%>
-    <c:if test="${requestScope.currentPage lt requestScope.noOfPages}">
-        <td><a href="view?page=${requestScope.currentPage + 1}">Next</a></td>
-    </c:if>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<c:if test="${noOfPages > 1}">
+    <div>
+        <table>
+            <tr >
+
+                <td><a href="view?page=${1}">First</a></td>
+                <td><a href="view?page=${currentPage - 1}">${prev}</a></td>
+                <c:forEach var="i" begin="${startPage}" end="${endPage}">
+                    <td><a href="view?page=${i}">${i}</a></td>
+                </c:forEach>
+             <%--   <c:forEach var="i" begin="${startPage}" end="${currentPage}">
+                    <td><a href="view?page=${i}">${i}</a></td>
+                </c:forEach>
+
+              &lt;%&ndash;  <td>${currentPage+1}</td>&ndash;%&gt;
+
+                <c:forEach var="i" begin="${currentPage+2}" end="${endPage}">
+                    <td><a href="view?page=${i}">${i}</a></td>
+                </c:forEach>--%>
+                <td><a href="view?page=${currentPage + 1}">${next}</a></td>
+                <td><a href="view?page=${noOfPages}">Last</a></td>
+
+            </tr>
+
+        </table>
+    </div>
+</c:if>
 <br>
 <p>
 <a href="/">1</a>
